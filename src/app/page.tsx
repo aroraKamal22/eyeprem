@@ -96,84 +96,98 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* ============ HERO SECTION ============ */}
-      {/* Mobile Hero - Full screen image background */}
-      <section className="lg:hidden relative min-h-screen">
-        {/* Background Image */}
+      {/* Mobile Hero - Modern gradient design */}
+      <section className="lg:hidden relative min-h-screen bg-gradient-to-br from-slate-900 via-primary-dark to-slate-900 overflow-hidden">
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/front-pic.jpeg"
-            alt="Prem Eye & Maternity Hospital"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
+          <div className="absolute top-0 right-0 w-72 h-72 bg-primary/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-1/3 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-[80px] -translate-x-1/2" />
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-cyan-500/20 rounded-full blur-[60px]" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 min-h-screen flex flex-col justify-end px-5 pb-8 pt-24">
-          {/* Main Content */}
-          <div className="text-center mb-6">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-5">
+        <div className="relative z-10 min-h-screen flex flex-col px-5 pt-24 pb-8">
+          {/* Top Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
               </span>
               <span className="text-white text-xs font-medium">Trusted Since 2012</span>
             </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col justify-center text-center">
+            {/* Icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg shadow-primary/40">
+                <Eye className="w-10 h-10 text-white" />
+              </div>
+            </div>
 
             {/* Heading */}
             <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
               Your Vision,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-primary-light">Our Mission</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-secondary">Our Mission</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white/80 text-base sm:text-lg mb-6 max-w-md mx-auto leading-relaxed">
-              Advanced Eye Care & Maternity Hospital in Barnala
+            <p className="text-white/70 text-base sm:text-lg mb-8 max-w-sm mx-auto leading-relaxed">
+              Advanced Eye Care & Maternity Hospital in Barnala, Punjab
             </p>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-4 gap-1 mb-8">
+              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
+                <p className="text-xl sm:text-2xl font-bold text-white">4.9</p>
+                <div className="flex justify-center mt-1">
+                  <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                </div>
+                <p className="text-[10px] text-white/60 mt-1">Rating</p>
+              </div>
+              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
+                <p className="text-xl sm:text-2xl font-bold text-white">1L+</p>
+                <div className="flex justify-center mt-1">
+                  <Heart className="w-3 h-3 text-red-400" />
+                </div>
+                <p className="text-[10px] text-white/60 mt-1">Patients</p>
+              </div>
+              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
+                <p className="text-xl sm:text-2xl font-bold text-white">15K+</p>
+                <div className="flex justify-center mt-1">
+                  <Activity className="w-3 h-3 text-green-400" />
+                </div>
+                <p className="text-[10px] text-white/60 mt-1">Surgeries</p>
+              </div>
+              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
+                <p className="text-xl sm:text-2xl font-bold text-white">12+</p>
+                <div className="flex justify-center mt-1">
+                  <Award className="w-3 h-3 text-cyan-400" />
+                </div>
+                <p className="text-[10px] text-white/60 mt-1">Years</p>
+              </div>
+            </div>
           </div>
 
-          {/* Stats Row */}
-          <div className="grid grid-cols-4 gap-2 bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-6">
-            <div className="text-center">
-              <p className="text-lg sm:text-xl font-bold text-white">4.9</p>
-              <p className="text-[10px] sm:text-xs text-white/70">Rating</p>
-            </div>
-            <div className="text-center border-l border-white/20">
-              <p className="text-lg sm:text-xl font-bold text-white">1L+</p>
-              <p className="text-[10px] sm:text-xs text-white/70">Patients</p>
-            </div>
-            <div className="text-center border-l border-white/20">
-              <p className="text-lg sm:text-xl font-bold text-white">15K+</p>
-              <p className="text-[10px] sm:text-xs text-white/70">Surgeries</p>
-            </div>
-            <div className="text-center border-l border-white/20">
-              <p className="text-lg sm:text-xl font-bold text-white">12+</p>
-              <p className="text-[10px] sm:text-xs text-white/70">Years</p>
-            </div>
-          </div>
-
-          {/* CTA Buttons */}
+          {/* Bottom Section */}
           <div className="space-y-3">
-            <Link href="/appointment" className="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/30">
+            {/* CTA Buttons */}
+            <Link href="/appointment" className="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform">
               <Calendar className="w-5 h-5" />
               Book Appointment
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="tel:+919877242893" className="w-full bg-white text-gray-900 py-4 rounded-full font-semibold flex items-center justify-center gap-2 shadow-lg">
+            <a href="tel:+919877242893" className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
               <Phone className="w-5 h-5" />
               Call: +91 98772-42893
             </a>
-          </div>
 
-          {/* Bottom Info */}
-          <div className="flex items-center justify-center mt-5 text-white/70 text-sm">
-            <div className="flex items-center gap-1">
-              <MapPin className="w-4 h-4" />
-              <span>Barnala, Punjab</span>
+            {/* Location */}
+            <div className="flex items-center justify-center pt-2 text-white/50 text-sm">
+              <MapPin className="w-4 h-4 mr-1" />
+              <span>Anaj Mandi Road, Barnala</span>
             </div>
           </div>
         </div>
