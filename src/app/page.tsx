@@ -96,214 +96,193 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* ============ HERO SECTION ============ */}
-      {/* Mobile Hero - Modern gradient design */}
-      <section className="lg:hidden relative min-h-screen bg-gradient-to-br from-slate-900 via-primary-dark to-slate-900 overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-primary/30 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
-          <div className="absolute bottom-1/3 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-[80px] -translate-x-1/2" />
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-cyan-500/20 rounded-full blur-[60px]" />
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-primary/5" />
+
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px] bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-tr from-secondary/10 to-secondary/5 rounded-full blur-3xl" />
+          {/* Grid pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}} />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 min-h-screen flex flex-col px-5 pt-24 pb-8">
-          {/* Top Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-              </span>
-              <span className="text-white text-xs font-medium">Trusted Since 2012</span>
-            </div>
-          </div>
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
+          <div className="min-h-[calc(100vh-80px)] lg:min-h-screen flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12 xl:gap-20 pt-24 sm:pt-28 lg:pt-0 pb-6 lg:pb-0">
 
-          {/* Main Content */}
-          <div className="flex-1 flex flex-col justify-center text-center">
-            {/* Icon */}
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg shadow-primary/40">
-                <Eye className="w-10 h-10 text-white" />
-              </div>
-            </div>
+            {/* Image Section - Left on Desktop, Top on Mobile */}
+            <div className="flex-1 relative animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              {/* Main Image Container */}
+              <div className="relative">
+                {/* Decorative background */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20 rounded-[2rem] lg:rounded-[3rem] blur-2xl opacity-60" />
 
-            {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
-              Your Vision,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-secondary">Our Mission</span>
-            </h1>
+                {/* Main Image */}
+                <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl shadow-gray-300/50 border-4 border-white">
+                  <div className="aspect-[16/9] sm:aspect-[16/10] lg:aspect-[4/3] relative">
+                    <Image
+                      src="/images/front-pic.jpeg"
+                      alt="Prem Eye & Maternity Hospital - Modern Healthcare Facility in Barnala"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  </div>
 
-            {/* Subtitle */}
-            <p className="text-white/70 text-base sm:text-lg mb-8 max-w-sm mx-auto leading-relaxed">
-              Advanced Eye Care & Maternity Hospital in Barnala, Punjab
-            </p>
-
-            {/* Stats Row */}
-            <div className="grid grid-cols-4 gap-1 mb-8">
-              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
-                <p className="text-xl sm:text-2xl font-bold text-white">4.9</p>
-                <div className="flex justify-center mt-1">
-                  <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                  {/* Hospital Name Badge on Image */}
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0">
+                          <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        </div>
+                        <div>
+                          <h2 className="font-bold text-gray-900 text-sm sm:text-base">Prem Eye & Maternity</h2>
+                          <p className="text-xs sm:text-sm text-gray-500">Advanced Healthcare Center</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[10px] text-white/60 mt-1">Rating</p>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
-                <p className="text-xl sm:text-2xl font-bold text-white">1L+</p>
-                <div className="flex justify-center mt-1">
-                  <Heart className="w-3 h-3 text-red-400" />
+
+                {/* Floating Cards - Desktop */}
+                <div className="hidden lg:block absolute -top-6 -left-6 xl:-left-10 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+                  <div className="bg-white rounded-2xl p-4 shadow-xl shadow-gray-200/50 border border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                        <Shield className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-bold text-gray-900">20+</p>
+                        <p className="text-xs text-gray-500">Insurance Partners</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[10px] text-white/60 mt-1">Patients</p>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
-                <p className="text-xl sm:text-2xl font-bold text-white">15K+</p>
-                <div className="flex justify-center mt-1">
-                  <Activity className="w-3 h-3 text-green-400" />
+
+                <div className="hidden lg:block absolute -bottom-6 -left-6 xl:-left-10 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
+                  <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-4 shadow-xl shadow-primary/30">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                        <Microscope className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-bold text-white">ZEISS & ALCON</p>
+                        <p className="text-xs text-white/80">Latest Technology</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[10px] text-white/60 mt-1">Surgeries</p>
+
+                {/* Decorative circles */}
+                <div className="hidden lg:block absolute -top-8 -right-8 w-16 h-16 border-2 border-primary/20 rounded-full animate-spin-slow" />
+                <div className="hidden lg:block absolute -bottom-8 -right-8 w-24 h-24 border-2 border-secondary/20 rounded-full animate-spin-slow" style={{animationDirection: 'reverse'}} />
               </div>
-              <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm">
-                <p className="text-xl sm:text-2xl font-bold text-white">12+</p>
-                <div className="flex justify-center mt-1">
-                  <Award className="w-3 h-3 text-cyan-400" />
-                </div>
-                <p className="text-[10px] text-white/60 mt-1">Years</p>
-              </div>
+
             </div>
-          </div>
 
-          {/* Bottom Section */}
-          <div className="space-y-3">
-            {/* CTA Buttons */}
-            <Link href="/appointment" className="w-full bg-gradient-to-r from-primary to-primary-light text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform">
-              <Calendar className="w-5 h-5" />
-              Book Appointment
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a href="tel:+919877242893" className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
-              <Phone className="w-5 h-5" />
-              Call: +91 98772-42893
-            </a>
-
-            {/* Location */}
-            <div className="flex items-center justify-center pt-2 text-white/50 text-sm">
-              <MapPin className="w-4 h-4 mr-1" />
-              <span>Anaj Mandi Road, Barnala</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Desktop Hero */}
-      <section className="hidden lg:flex relative min-h-screen bg-gradient-to-br from-slate-900 via-primary-dark to-slate-900 items-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-primary/40 to-transparent rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-secondary/30 to-transparent rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 animate-pulse" style={{animationDelay: '1s'}} />
-          <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}} />
-          <div className="absolute top-20 left-[20%] w-2 h-2 bg-white/30 rounded-full floating" />
-          <div className="absolute top-40 right-[30%] w-3 h-3 bg-primary/50 rounded-full floating-delayed" />
-        </div>
-
-        <div className="container mx-auto px-4 py-0 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-6rem)]">
-            {/* Left Content */}
-            <div>
-              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-2.5 rounded-full mb-6 animate-fade-in-up">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
-                </span>
-                <span className="text-white/90 text-sm font-medium">Trusted by 1,00,000+ Patients Since 2012</span>
+            {/* Right Content - Text Section */}
+            <div className="flex-1 flex flex-col justify-center text-center lg:text-left py-4 lg:py-12">
+              {/* Trust Badge */}
+              <div className="flex justify-center lg:justify-start mb-4 lg:mb-6 animate-fade-in-up">
+                <div className="inline-flex items-center gap-2 bg-white shadow-lg shadow-primary/10 border border-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                  <span className="text-gray-700 text-xs sm:text-sm font-medium">Trusted Since 2012 • Barnala</span>
+                </div>
               </div>
 
-              <h1 className="text-5xl xl:text-7xl font-bold text-white leading-[1.1] mb-6 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-                Your Vision<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-primary-light to-secondary">Our Mission</span>
+              {/* Main Heading */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-gray-900 leading-[1.15] mb-3 sm:mb-4 lg:mb-6 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+                Advanced{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Eye Care</span>
+                {' '}&amp;{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-secondary-light">Maternity</span>
+                {' '}Hospital
               </h1>
 
-              <p className="text-xl text-white/70 mb-8 max-w-xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                Advanced Eye Care & Maternity Hospital in Barnala with cutting-edge technology and compassionate specialists.
+              {/* Subtitle */}
+              <p className="text-gray-600 text-sm sm:text-base lg:text-xl mb-5 sm:mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+                World-class eye care and maternity services with expert doctors and cutting-edge technology.
               </p>
 
-              <div className="flex gap-4 mb-10 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                <Link href="/appointment" className="group bg-gradient-to-r from-primary to-primary-light text-white text-lg px-8 py-4 rounded-full font-semibold flex items-center gap-3 shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
-                  <Calendar className="w-5 h-5" />
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-10 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+                <Link href="/appointment" className="group bg-gradient-to-r from-primary to-primary-light text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
                   Book Appointment
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a href="tel:+919877242893" className="group bg-white/10 backdrop-blur-sm border border-white/20 text-white text-lg px-8 py-4 rounded-full font-semibold flex items-center gap-3 hover:bg-white/20 transition-all duration-300">
-                  <Phone className="w-5 h-5" />
-                  Call Now
+                <a href="tel:+919877242893" className="group bg-white border-2 border-gray-200 text-gray-700 px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:border-primary hover:text-primary hover:shadow-lg active:scale-[0.98] transition-all duration-300">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                  +91 98772-42893
                 </a>
               </div>
 
-              <div className="flex gap-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                <a href="tel:+919877242893" className="flex items-center gap-4 group">
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 transition-all">
-                    <Phone className="w-6 h-6 text-primary-light" />
+              {/* Stats Grid */}
+              <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900">4.9</span>
+                    <Star className="w-3.5 h-3.5 sm:w-6 sm:h-6 text-yellow-400 fill-yellow-400" />
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Rating</p>
+                </div>
+                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900">1L+</span>
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Patients</p>
+                </div>
+                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900">15K+</span>
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Surgeries</p>
+                </div>
+                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900">12+</span>
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Years</p>
+                </div>
+              </div>
+
+              {/* Quick Info - Desktop only */}
+              <div className="hidden lg:flex items-center gap-8 mt-10 pt-8 border-t border-gray-200 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
+                <a href="tel:+919877242893" className="flex items-center gap-3 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-white/50">24/7 Helpline</p>
-                    <p className="text-lg font-bold text-white">+91 98772-42893</p>
+                    <p className="text-xs text-gray-500">24/7 Emergency</p>
+                    <p className="text-sm font-bold text-gray-900">+91 98772-42893</p>
                   </div>
                 </a>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-secondary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/50">Visit Us</p>
-                    <p className="text-lg font-bold text-white">Barnala, Punjab</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-4 gap-4 mt-10 pt-8 border-t border-white/10 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
-                {stats.map((stat, i) => (
-                  <div key={i}>
-                    <p className="text-2xl xl:text-3xl font-bold text-white mb-1">{stat.value}</p>
-                    <p className="text-white/50 text-sm">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative animate-fade-in-up">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-3xl blur-2xl scale-95 opacity-60" />
-              <div className="relative rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl">
-                <div className="aspect-[4/3] relative">
-                  <Image src="/images/front-pic.jpeg" alt="Prem Eye & Maternity Hospital" fill className="object-cover" priority />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
-                </div>
-              </div>
-
-              <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-2xl shadow-black/20 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg shadow-primary/30">
-                    <Award className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-secondary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">12+</p>
-                    <p className="text-sm text-gray-500">Years Excellence</p>
+                    <p className="text-xs text-gray-500">Location</p>
+                    <p className="text-sm font-bold text-gray-900">Anaj Mandi Road, Barnala</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="absolute bottom-8 -right-4 bg-gradient-to-r from-primary to-primary-light rounded-2xl p-4 shadow-2xl shadow-primary/30 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                    <Eye className="w-5 h-5 text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="text-xl font-bold text-white">15,000+</p>
-                    <p className="text-xs text-white/70">Surgeries Done</p>
+                    <p className="text-xs text-gray-500">Working Hours</p>
+                    <p className="text-sm font-bold text-gray-900">9 AM - 8 PM</p>
                   </div>
                 </div>
               </div>
-
-              <div className="absolute -top-12 -left-12 w-24 h-24 border-2 border-primary/30 rounded-full animate-spin-slow" />
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 border-2 border-secondary/30 rounded-full animate-spin-slow" style={{animationDirection: 'reverse'}} />
             </div>
           </div>
         </div>
