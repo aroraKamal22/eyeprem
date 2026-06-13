@@ -822,22 +822,19 @@ export default function Home() {
               <p className="text-gray-500 text-sm mt-2">Expert care by Dr. Pallvi Singla</p>
             </div>
 
-            <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing with expert care", gradient: "from-pink-500 to-rose-500" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery when needed", gradient: "from-purple-500 to-pink-500" },
-                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring", gradient: "from-teal-500 to-secondary" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & newborn wellness support", gradient: "from-secondary to-emerald-500" },
+                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing", gradient: "from-pink-500 to-rose-500" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery", gradient: "from-purple-500 to-pink-500" },
+                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Pregnancy monitoring", gradient: "from-teal-500 to-secondary" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby care", gradient: "from-secondary to-emerald-500" },
               ].map((service, i) => (
-                <div key={i} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 flex items-center gap-4 hover:shadow-xl transition-all">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-3 flex-shrink-0 shadow-lg`}>
-                    <Image src={service.icon} alt={service.title} width={64} height={64} className="object-contain w-full h-full brightness-0 invert" />
+                <div key={i} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all">
+                  <div className={`w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br ${service.gradient} p-4 mb-3 shadow-lg`}>
+                    <Image src={service.icon} alt={service.title} width={96} height={96} className="object-contain w-full h-full brightness-0 invert" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 text-base mb-1">{service.title}</h3>
-                    <p className="text-gray-500 text-xs">{service.desc}</p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-secondary flex-shrink-0" />
+                  <h3 className="font-bold text-gray-900 text-sm mb-1">{service.title}</h3>
+                  <p className="text-gray-500 text-[10px]">{service.desc}</p>
                 </div>
               ))}
             </div>
@@ -907,7 +904,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Maternity Services Grid - Redesigned */}
+          {/* Maternity Services Grid - Redesigned with Large Images */}
           <div className="grid lg:grid-cols-4 gap-8 mb-12">
             {[
               { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", gradient: "from-pink-500 to-rose-500", bgGradient: "from-pink-50 to-rose-50" },
@@ -917,14 +914,14 @@ export default function Home() {
             ].map((service, i) => (
               <div
                 key={i}
-                className={`group bg-gradient-to-br ${service.bgGradient} rounded-3xl p-8 border border-secondary/10 hover:border-secondary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden`}
+                className={`group bg-gradient-to-br ${service.bgGradient} rounded-3xl p-6 border border-secondary/10 hover:border-secondary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden text-center`}
               >
                 {/* Decorative circle */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full" />
 
-                {/* Icon with gradient background */}
-                <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} p-4 mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <Image src={service.icon} alt={service.title} width={80} height={80} className="object-contain w-full h-full brightness-0 invert" />
+                {/* Large Icon with gradient background */}
+                <div className={`relative w-32 h-32 mx-auto rounded-3xl bg-gradient-to-br ${service.gradient} p-5 mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300`}>
+                  <Image src={service.icon} alt={service.title} width={128} height={128} className="object-contain w-full h-full brightness-0 invert" />
                 </div>
 
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors">
@@ -933,7 +930,7 @@ export default function Home() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.desc}</p>
 
                 {/* Doctor info */}
-                <div className="flex items-center gap-2 pt-4 border-t border-secondary/10">
+                <div className="flex items-center justify-center gap-2 pt-4 border-t border-secondary/10">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-light flex items-center justify-center">
                     <span className="text-white text-xs font-bold">PS</span>
                   </div>
