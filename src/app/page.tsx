@@ -809,31 +809,35 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Maternity Services */}
+          {/* Maternity Services - Mobile */}
           <div className="mb-8">
             <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500/10 to-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-3 border border-secondary/20">
                 <Baby className="w-4 h-4" />
-                Maternity
+                Mother & Baby Care
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
                 Maternity <span className="text-secondary">Services</span>
               </h2>
+              <p className="text-gray-500 text-sm mt-2">Expert care by Dr. Pallvi Singla</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-3">
               {[
-                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery" },
-                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy care" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby wellness" },
+                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing with expert care", gradient: "from-pink-500 to-rose-500" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery when needed", gradient: "from-purple-500 to-pink-500" },
+                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring", gradient: "from-teal-500 to-secondary" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & newborn wellness support", gradient: "from-secondary to-emerald-500" },
               ].map((service, i) => (
-                <div key={i} className="bg-white rounded-2xl p-4 shadow-sm border-l-4 border-secondary">
-                  <div className="w-10 h-10 mb-2">
-                    <Image src={service.icon} alt={service.title} width={40} height={40} className="object-contain" />
+                <div key={i} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 flex items-center gap-4 hover:shadow-xl transition-all">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-3 flex-shrink-0 shadow-lg`}>
+                    <Image src={service.icon} alt={service.title} width={64} height={64} className="object-contain w-full h-full brightness-0 invert" />
                   </div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-1">{service.title}</h3>
-                  <p className="text-gray-500 text-xs">{service.desc}</p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 text-base mb-1">{service.title}</h3>
+                    <p className="text-gray-500 text-xs">{service.desc}</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-secondary flex-shrink-0" />
                 </div>
               ))}
             </div>
@@ -890,39 +894,51 @@ export default function Home() {
           </div>
 
           {/* Maternity Services Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-5 py-2 rounded-full text-sm font-semibold border border-secondary/20 mb-4">
-              <Baby className="w-4 h-4" />
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500/10 to-secondary/10 text-secondary px-6 py-3 rounded-full text-sm font-semibold border border-secondary/20 mb-6">
+              <Baby className="w-5 h-5" />
               Maternity Services
             </div>
-            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Mother & Baby <span className="text-secondary">Care</span>
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-xl max-w-3xl mx-auto">
               Complete maternity care with experienced gynecologists and modern facilities
             </p>
           </div>
 
-          {/* Maternity Services Grid */}
-          <div className="grid lg:grid-cols-4 gap-6 mb-12">
+          {/* Maternity Services Grid - Redesigned */}
+          <div className="grid lg:grid-cols-4 gap-8 mb-12">
             {[
-              { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care", doctor: "Dr. Pallvi Singla" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery when medically necessary", doctor: "Dr. Pallvi Singla" },
-              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring and health checkups", doctor: "Dr. Pallvi Singla" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness & recovery support", doctor: "Dr. Pallvi Singla" },
+              { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", gradient: "from-pink-500 to-rose-500", bgGradient: "from-pink-50 to-rose-50" },
+              { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery with advanced OT facilities when medically necessary", doctor: "Dr. Pallvi Singla", gradient: "from-purple-500 to-pink-500", bgGradient: "from-purple-50 to-pink-50" },
+              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring, health checkups and guidance for expecting mothers", doctor: "Dr. Pallvi Singla", gradient: "from-teal-500 to-secondary", bgGradient: "from-teal-50 to-emerald-50" },
+              { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness, recovery support and breastfeeding guidance", doctor: "Dr. Pallvi Singla", gradient: "from-secondary to-emerald-500", bgGradient: "from-emerald-50 to-teal-50" },
             ].map((service, i) => (
               <div
                 key={i}
-                className="group bg-gradient-to-br from-secondary/5 to-transparent rounded-2xl p-6 border border-secondary/10 hover:border-secondary/30 hover:shadow-xl transition-all duration-300"
+                className={`group bg-gradient-to-br ${service.bgGradient} rounded-3xl p-8 border border-secondary/10 hover:border-secondary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden`}
               >
-                <div className="w-14 h-14 mb-4">
-                  <Image src={service.icon} alt={service.title} width={56} height={56} className="object-contain" />
+                {/* Decorative circle */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full" />
+
+                {/* Icon with gradient background */}
+                <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} p-4 mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <Image src={service.icon} alt={service.title} width={80} height={80} className="object-contain w-full h-full brightness-0 invert" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors">
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">{service.desc}</p>
-                <p className="text-secondary text-xs font-semibold">{service.doctor}</p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.desc}</p>
+
+                {/* Doctor info */}
+                <div className="flex items-center gap-2 pt-4 border-t border-secondary/10">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-light flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">PS</span>
+                  </div>
+                  <span className="text-secondary text-sm font-semibold">{service.doctor}</span>
+                </div>
               </div>
             ))}
           </div>
