@@ -825,7 +825,7 @@ export default function Home() {
               {[
                 { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing" },
                 { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery" },
-                { icon: "/images/prenatal-care.jpg", title: "Prenatal Care", desc: "Complete pregnancy care" },
+                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy care" },
                 { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby wellness" },
               ].map((service, i) => (
                 <div key={i} className="bg-white rounded-2xl p-4 shadow-sm border-l-4 border-secondary">
@@ -908,7 +908,7 @@ export default function Home() {
             {[
               { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care", doctor: "Dr. Pallvi Singla" },
               { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery when medically necessary", doctor: "Dr. Pallvi Singla" },
-              { icon: "/images/prenatal-care.jpg", title: "Prenatal Care", desc: "Complete pregnancy monitoring and health checkups", doctor: "Dr. Pallvi Singla" },
+              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring and health checkups", doctor: "Dr. Pallvi Singla" },
               { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness & recovery support", doctor: "Dr. Pallvi Singla" },
             ].map((service, i) => (
               <div
