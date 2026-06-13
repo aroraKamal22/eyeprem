@@ -264,3 +264,167 @@
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
+
+/* ===== ENHANCED HERO ANIMATIONS ===== */
+
+/* Counter/Transaction Animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes numberPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.animate-count-up {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+.animate-number-pop {
+  animation: numberPop 0.3s ease-out;
+}
+
+/* Particle/Dot Animation */
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  25% { transform: translateY(-15px) translateX(5px); opacity: 1; }
+  50% { transform: translateY(-30px) translateX(-5px); opacity: 0.8; }
+  75% { transform: translateY(-15px) translateX(10px); opacity: 1; }
+}
+
+.animate-particle {
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(133, 10, 7, 0.3), 0 0 40px rgba(133, 10, 7, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(133, 10, 7, 0.5), 0 0 60px rgba(133, 10, 7, 0.2); }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(133, 10, 7, 0.3); }
+  50% { border-color: rgba(23, 105, 91, 0.5); }
+}
+
+.animate-border-glow {
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+/* Typewriter cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Slide in from bottom with bounce */
+@keyframes slideInBounce {
+  0% { opacity: 0; transform: translateY(60px); }
+  60% { opacity: 1; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-bounce {
+  animation: slideInBounce 0.8s ease-out forwards;
+}
+
+/* Stats card shine effect */
+@keyframes cardShine {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+.stat-card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: cardShine 3s ease-in-out infinite;
+  animation-delay: var(--shine-delay, 0s);
+}
+
+/* Ripple effect on buttons */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+  transform: scale(0);
+  opacity: 0;
+}
+
+.btn-ripple:hover::after {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Floating badge animation */
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(1deg); }
+  75% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.animate-float-badge {
+  animation: floatBadge 4s ease-in-out infinite;
+}
+
+/* Hero background particles */
+.hero-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+/* 3D Card tilt effect */
+.tilt-card {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(10px);
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }

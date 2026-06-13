@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -90,6 +90,52 @@ const testimonials = [
   { name: "Harpreet Singh", location: "Bathinda", text: "Got LASIK done here. Now seeing 6/6 without glasses! Highly professional team.", rating: 5, image: "H" },
 ];
 
+// Animated Counter Component
+function AnimatedCounter({ end, suffix = "", prefix = "", duration = 2000 }: { end: number; suffix?: string; prefix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const counterRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeOut * end));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    requestAnimationFrame(step);
+  }, [isVisible, end, duration]);
+
+  return (
+    <span ref={counterRef} className="tabular-nums">
+      {prefix}{count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 export default function Home() {
   const [activeDoctor, setActiveDoctor] = useState(0);
 
@@ -97,43 +143,56 @@ export default function Home() {
     <div className="overflow-hidden">
       {/* ============ HERO SECTION ============ */}
       <section className="relative min-h-screen overflow-hidden">
-        {/* Background */}
+        {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-primary/5" />
+
+        {/* Animated gradient mesh */}
+        <div className="absolute inset-0 opacity-60">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 animate-gradient" style={{backgroundSize: '400% 400%'}} />
+        </div>
 
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px] bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-tr from-secondary/10 to-secondary/5 rounded-full blur-3xl" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px] bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl animate-pulse" style={{animationDuration: '4s'}} />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-tr from-secondary/10 to-secondary/5 rounded-full blur-3xl animate-pulse" style={{animationDuration: '5s', animationDelay: '1s'}} />
+
+          {/* Floating particles */}
+          <div className="hidden lg:block absolute top-1/4 left-1/4 w-3 h-3 bg-primary/30 rounded-full animate-particle" style={{animationDelay: '0s'}} />
+          <div className="hidden lg:block absolute top-1/3 right-1/3 w-2 h-2 bg-secondary/40 rounded-full animate-particle" style={{animationDelay: '1s'}} />
+          <div className="hidden lg:block absolute bottom-1/3 left-1/3 w-4 h-4 bg-accent/30 rounded-full animate-particle" style={{animationDelay: '2s'}} />
+          <div className="hidden lg:block absolute top-1/2 right-1/4 w-2 h-2 bg-primary/20 rounded-full animate-particle" style={{animationDelay: '0.5s'}} />
+          <div className="hidden lg:block absolute bottom-1/4 right-1/2 w-3 h-3 bg-secondary/25 rounded-full animate-particle" style={{animationDelay: '1.5s'}} />
+
           {/* Grid pattern */}
           <div className="absolute inset-0 opacity-[0.02]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'}} />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6">
-          <div className="min-h-[calc(100vh-80px)] lg:min-h-screen flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12 xl:gap-20 pt-24 sm:pt-28 lg:pt-0 pb-6 lg:pb-0">
+          <div className="min-h-[calc(100vh-80px)] lg:min-h-screen flex flex-row items-center gap-4 sm:gap-6 lg:gap-12 xl:gap-20 pt-24 sm:pt-28 lg:pt-0 pb-6 lg:pb-0">
 
-            {/* Image Section - Left on Desktop, Top on Mobile */}
-            <div className="flex-1 relative animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+            {/* Image Section - Left Side */}
+            <div className="w-[40%] lg:flex-1 relative animate-fade-in-up flex-shrink-0" style={{animationDelay: '0.1s'}}>
               {/* Main Image Container */}
               <div className="relative">
                 {/* Decorative background */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20 rounded-[2rem] lg:rounded-[3rem] blur-2xl opacity-60" />
+                <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-br from-primary/20 via-secondary/10 to-primary/20 rounded-2xl lg:rounded-[3rem] blur-2xl opacity-60" />
 
                 {/* Main Image */}
-                <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl shadow-gray-300/50 border-4 border-white">
-                  <div className="aspect-[16/9] sm:aspect-[16/10] lg:aspect-[4/3] relative">
+                <div className="relative rounded-xl lg:rounded-3xl overflow-hidden shadow-xl lg:shadow-2xl shadow-gray-300/50 border-2 lg:border-4 border-white bg-gray-100">
+                  <div className="aspect-[3/4] sm:aspect-[4/5] lg:aspect-[4/3] relative">
                     <Image
                       src="/images/front-pic.jpeg"
                       alt="Prem Eye & Maternity Hospital - Modern Healthcare Facility in Barnala"
                       fill
-                      className="object-cover"
+                      className="object-contain sm:object-cover"
                       priority
                     />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                   </div>
 
-                  {/* Hospital Name Badge on Image */}
-                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
+                  {/* Hospital Name Badge on Image - Desktop Only */}
+                  <div className="hidden lg:block absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto">
                     <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0">
@@ -148,26 +207,28 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating Cards - Desktop */}
-                <div className="hidden lg:block absolute -top-6 -left-6 xl:-left-10 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                  <div className="bg-white rounded-2xl p-4 shadow-xl shadow-gray-200/50 border border-gray-100">
+                {/* Floating Cards - Desktop with enhanced animations */}
+                <div className="hidden lg:block absolute -top-6 -left-6 xl:-left-10 animate-fade-in-up floating" style={{animationDelay: '0.6s'}}>
+                  <div className="tilt-card bg-white rounded-2xl p-4 shadow-xl shadow-gray-200/50 border border-gray-100 hover:shadow-2xl transition-all duration-300">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center animate-pulse" style={{animationDuration: '3s'}}>
                         <Shield className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-lg font-bold text-gray-900">20+</p>
+                        <p className="text-lg font-bold text-gray-900">
+                          <AnimatedCounter end={20} suffix="+" duration={1500} />
+                        </p>
                         <p className="text-xs text-gray-500">Insurance Partners</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="hidden lg:block absolute -bottom-6 -left-6 xl:-left-10 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
-                  <div className="bg-gradient-to-r from-primary to-primary-light rounded-2xl p-4 shadow-xl shadow-primary/30">
+                <div className="hidden lg:block absolute -bottom-6 -left-6 xl:-left-10 animate-fade-in-up floating-delayed" style={{animationDelay: '0.7s'}}>
+                  <div className="tilt-card bg-gradient-to-r from-primary to-primary-light rounded-2xl p-4 shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
-                        <Microscope className="w-5 h-5 text-white" />
+                        <Microscope className="w-5 h-5 text-white animate-pulse" />
                       </div>
                       <div>
                         <p className="text-lg font-bold text-white">ZEISS & ALCON</p>
@@ -177,79 +238,111 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Decorative circles */}
-                <div className="hidden lg:block absolute -top-8 -right-8 w-16 h-16 border-2 border-primary/20 rounded-full animate-spin-slow" />
-                <div className="hidden lg:block absolute -bottom-8 -right-8 w-24 h-24 border-2 border-secondary/20 rounded-full animate-spin-slow" style={{animationDirection: 'reverse'}} />
+                {/* Decorative circles with glow */}
+                <div className="hidden lg:block absolute -top-8 -right-8 w-16 h-16 border-2 border-primary/20 rounded-full animate-spin-slow animate-border-glow" />
+                <div className="hidden lg:block absolute -bottom-8 -right-8 w-24 h-24 border-2 border-secondary/20 rounded-full animate-spin-slow animate-border-glow" style={{animationDirection: 'reverse'}} />
               </div>
 
             </div>
 
             {/* Right Content - Text Section */}
-            <div className="flex-1 flex flex-col justify-center text-center lg:text-left py-4 lg:py-12">
-              {/* Trust Badge */}
-              <div className="flex justify-center lg:justify-start mb-4 lg:mb-6 animate-fade-in-up">
-                <div className="inline-flex items-center gap-2 bg-white shadow-lg shadow-primary/10 border border-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
-                  <span className="relative flex h-2 w-2">
+            <div className="flex-1 flex flex-col justify-center text-left py-2 lg:py-12">
+              {/* Trust Badge - Floating */}
+              <div className="flex justify-start mb-2 lg:mb-6 animate-fade-in-up">
+                <div className="animate-float-badge inline-flex items-center gap-1.5 lg:gap-2 bg-white shadow-lg shadow-primary/10 border border-primary/10 px-2 py-1 lg:px-4 lg:py-2 rounded-full hover:shadow-xl transition-shadow">
+                  <span className="relative flex h-1.5 w-1.5 lg:h-2 lg:w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 lg:h-2 lg:w-2 bg-green-500"></span>
                   </span>
-                  <span className="text-gray-700 text-xs sm:text-sm font-medium">Trusted Since 2012 • Barnala</span>
+                  <span className="text-gray-700 text-[10px] lg:text-sm font-medium">Since 2012 • Barnala</span>
+                  <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-accent" />
                 </div>
               </div>
 
-              {/* Main Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-gray-900 leading-[1.15] mb-3 sm:mb-4 lg:mb-6 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              {/* Main Heading with gradient animation */}
+              <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-gray-900 leading-[1.15] mb-2 lg:mb-6 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
                 Advanced{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Eye Care</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-light to-primary animate-gradient" style={{backgroundSize: '200% 200%'}}>Eye Care</span>
                 {' '}&amp;{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-secondary-light">Maternity</span>
-                {' '}Hospital
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-light to-secondary animate-gradient" style={{backgroundSize: '200% 200%', animationDelay: '0.5s'}}>Maternity</span>
+                {' '}<span className="hidden sm:inline">Hospital</span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="text-gray-600 text-sm sm:text-base lg:text-xl mb-5 sm:mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+              {/* Subtitle - Hidden on very small mobile */}
+              <p className="hidden sm:block text-gray-600 text-sm lg:text-xl mb-4 lg:mb-8 max-w-xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 World-class eye care and maternity services with expert doctors and cutting-edge technology.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-10 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                <Link href="/appointment" className="group bg-gradient-to-r from-primary to-primary-light text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
-                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Book Appointment
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              {/* CTA Buttons with ripple effect */}
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-start mb-4 lg:mb-10 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+                <Link href="/appointment" className="btn-ripple group bg-gradient-to-r from-primary to-primary-light text-white px-3 sm:px-8 py-2 sm:py-4 rounded-full font-semibold text-[11px] sm:text-base flex items-center justify-center gap-1 sm:gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 animate-glow-pulse">
+                  <Calendar className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                  Book Now
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform hidden sm:block" />
                 </Link>
-                <a href="tel:+919877242893" className="group bg-white border-2 border-gray-200 text-gray-700 px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:border-primary hover:text-primary hover:shadow-lg active:scale-[0.98] transition-all duration-300">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                  +91 98772-42893
+                <a href="tel:+919877242893" className="btn-ripple group bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 sm:px-8 py-2 sm:py-4 rounded-full font-semibold text-[11px] sm:text-base flex items-center justify-center gap-1 sm:gap-2 shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                  <Phone className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:animate-pulse" />
+                  Call Now
                 </a>
               </div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
-                    <span className="text-lg sm:text-3xl font-bold text-gray-900">4.9</span>
-                    <Star className="w-3.5 h-3.5 sm:w-6 sm:h-6 text-yellow-400 fill-yellow-400" />
+              {/* Stats - Mobile (Dark Card with animation) */}
+              <div className="sm:hidden bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 rounded-xl p-4 animate-slide-bounce shadow-xl shadow-purple-500/30" style={{animationDelay: '0.4s'}}>
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-0.5 mb-1">
+                      <span className="text-xl font-bold text-yellow-400">4.9</span>
+                      <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    </div>
+                    <p className="text-white/70 text-[10px]">Rating</p>
                   </div>
-                  <p className="text-gray-500 text-[10px] sm:text-sm">Rating</p>
-                </div>
-                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
-                    <span className="text-lg sm:text-3xl font-bold text-gray-900">1L+</span>
+                  <div className="text-center border-x border-white/20">
+                    <span className="text-xl font-bold text-yellow-400 block">
+                      <AnimatedCounter end={100} suffix="K+" duration={1500} />
+                    </span>
+                    <p className="text-white/70 text-[10px]">Patients</p>
                   </div>
-                  <p className="text-gray-500 text-[10px] sm:text-sm">Patients</p>
+                  <div className="text-center">
+                    <span className="text-xl font-bold text-yellow-400 block">
+                      <AnimatedCounter end={15} suffix="K+" duration={1500} />
+                    </span>
+                    <p className="text-white/70 text-[10px]">Surgeries</p>
+                  </div>
                 </div>
-                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+              </div>
+
+              {/* Stats Grid - Desktop with animated counters */}
+              <div className="hidden sm:grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                <div className="stat-card-shine bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '0s'} as React.CSSProperties}>
                   <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
-                    <span className="text-lg sm:text-3xl font-bold text-gray-900">15K+</span>
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">4.9</span>
+                    <Star className="w-3.5 h-3.5 sm:w-6 sm:h-6 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Google Rating</p>
+                </div>
+                <div className="stat-card-shine bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '0.5s'} as React.CSSProperties}>
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                      <AnimatedCounter end={100000} suffix="+" duration={2000} />
+                    </span>
+                  </div>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Happy Patients</p>
+                </div>
+                <div className="stat-card-shine bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '1s'} as React.CSSProperties}>
+                  <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                      <AnimatedCounter end={15000} suffix="+" duration={2000} />
+                    </span>
                   </div>
                   <p className="text-gray-500 text-[10px] sm:text-sm">Surgeries</p>
                 </div>
-                <div className="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left">
+                <div className="stat-card-shine bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-5 shadow-md sm:shadow-lg shadow-gray-100 border border-gray-100 text-center lg:text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '1.5s'} as React.CSSProperties}>
                   <div className="flex items-center justify-center lg:justify-start gap-0.5 sm:gap-1 mb-0.5 sm:mb-1">
-                    <span className="text-lg sm:text-3xl font-bold text-gray-900">12+</span>
+                    <span className="text-lg sm:text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                      <AnimatedCounter end={12} suffix="+" duration={1500} />
+                    </span>
                   </div>
-                  <p className="text-gray-500 text-[10px] sm:text-sm">Years</p>
+                  <p className="text-gray-500 text-[10px] sm:text-sm">Years Experience</p>
                 </div>
               </div>
 
