@@ -824,14 +824,14 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing", gradient: "from-pink-500 to-rose-500" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery", gradient: "from-purple-500 to-pink-500" },
-                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Pregnancy monitoring", gradient: "from-teal-500 to-secondary" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby care", gradient: "from-secondary to-emerald-500" },
+                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery" },
+                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Pregnancy monitoring" },
+                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby care" },
               ].map((service, i) => (
                 <div key={i} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all">
-                  <div className={`w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br ${service.gradient} p-4 mb-3 shadow-lg`}>
-                    <Image src={service.icon} alt={service.title} width={96} height={96} className="object-contain w-full h-full brightness-0 invert" />
+                  <div className="w-20 h-20 mx-auto mb-3 rounded-xl overflow-hidden bg-secondary/5 p-2">
+                    <Image src={service.icon} alt={service.title} width={80} height={80} className="object-contain w-full h-full" />
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm mb-1">{service.title}</h3>
                   <p className="text-gray-500 text-[10px]">{service.desc}</p>
@@ -907,10 +907,10 @@ export default function Home() {
           {/* Maternity Services Grid - Redesigned with Large Images */}
           <div className="grid lg:grid-cols-4 gap-8 mb-12">
             {[
-              { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", gradient: "from-pink-500 to-rose-500", bgGradient: "from-pink-50 to-rose-50" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery with advanced OT facilities when medically necessary", doctor: "Dr. Pallvi Singla", gradient: "from-purple-500 to-pink-500", bgGradient: "from-purple-50 to-pink-50" },
-              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring, health checkups and guidance for expecting mothers", doctor: "Dr. Pallvi Singla", gradient: "from-teal-500 to-secondary", bgGradient: "from-teal-50 to-emerald-50" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness, recovery support and breastfeeding guidance", doctor: "Dr. Pallvi Singla", gradient: "from-secondary to-emerald-500", bgGradient: "from-emerald-50 to-teal-50" },
+              { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", bgGradient: "from-pink-50 to-rose-50" },
+              { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery with advanced OT facilities when medically necessary", doctor: "Dr. Pallvi Singla", bgGradient: "from-purple-50 to-pink-50" },
+              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring, health checkups and guidance for expecting mothers", doctor: "Dr. Pallvi Singla", bgGradient: "from-teal-50 to-emerald-50" },
+              { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness, recovery support and breastfeeding guidance", doctor: "Dr. Pallvi Singla", bgGradient: "from-emerald-50 to-teal-50" },
             ].map((service, i) => (
               <div
                 key={i}
@@ -919,9 +919,9 @@ export default function Home() {
                 {/* Decorative circle */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full" />
 
-                {/* Large Icon with gradient background */}
-                <div className={`relative w-32 h-32 mx-auto rounded-3xl bg-gradient-to-br ${service.gradient} p-5 mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300`}>
-                  <Image src={service.icon} alt={service.title} width={128} height={128} className="object-contain w-full h-full brightness-0 invert" />
+                {/* Large Image */}
+                <div className="relative w-36 h-36 mx-auto rounded-2xl overflow-hidden mb-6 shadow-lg group-hover:scale-105 transition-transform duration-300 bg-white">
+                  <Image src={service.icon} alt={service.title} fill className="object-contain p-2" />
                 </div>
 
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors">
