@@ -16,8 +16,8 @@ const doctors = [
     qualification: "M.B.B.S, M.S. (Ophthalmology)",
     role: "Founder & Chief Surgeon",
     specialization: "Phaco & LASIK Expert",
-    experience: "12+",
-    surgeries: "15,000+",
+    experience: "14+",
+    surgeries: "60,000+",
     image: "/images/Dr Rupesh Singla.jpg",
     color: "from-rose-500 to-red-600",
     available: true
@@ -66,6 +66,17 @@ const doctors = [
     color: "from-violet-500 to-purple-600",
     available: true
   },
+  {
+    name: "Dr. Daizy Pathania",
+    qualification: "M.B.B.S, M.S. (Ophthalmology)",
+    role: "Glaucoma Specialist",
+    specialization: "Glaucoma Management",
+    experience: "10+",
+    surgeries: "5,000+",
+    image: "/images/Dr Daizy Pathania.jpg",
+    color: "from-cyan-500 to-blue-600",
+    available: true
+  },
 ];
 
 const services = [
@@ -78,9 +89,9 @@ const services = [
 ];
 
 const stats = [
-  { value: "1,00,000+", label: "Happy Patients", icon: Heart },
-  { value: "15,000+", label: "Surgeries", icon: Activity },
-  { value: "12+", label: "Years", icon: Award },
+  { value: "2,00,000+", label: "Happy Patients", icon: Heart },
+  { value: "60,000+", label: "Surgeries", icon: Activity },
+  { value: "14+", label: "Years", icon: Award },
   { value: "4.9★", label: "Google Rating", icon: Star },
 ];
 
@@ -227,15 +238,15 @@ export default function Home() {
                 <p className="text-gray-500 text-[10px]">Rating</p>
               </div>
               <div className="text-center border-l border-gray-100">
-                <span className="text-lg font-bold text-gray-900 block">1L+</span>
+                <span className="text-lg font-bold text-gray-900 block">2L+</span>
                 <p className="text-gray-500 text-[10px]">Patients</p>
               </div>
               <div className="text-center border-l border-gray-100">
-                <span className="text-lg font-bold text-gray-900 block">15K+</span>
+                <span className="text-lg font-bold text-gray-900 block">60K+</span>
                 <p className="text-gray-500 text-[10px]">Surgeries</p>
               </div>
               <div className="text-center border-l border-gray-100">
-                <span className="text-lg font-bold text-gray-900 block">12+</span>
+                <span className="text-lg font-bold text-gray-900 block">14+</span>
                 <p className="text-gray-500 text-[10px]">Years</p>
               </div>
             </div>
@@ -331,7 +342,7 @@ export default function Home() {
                       </div>
                       <div>
                         <p className="text-lg font-bold text-gray-900">
-                          <AnimatedCounter end={20} suffix="+" duration={1500} />
+                          <AnimatedCounter end={40} suffix="+" duration={1500} />
                         </p>
                         <p className="text-xs text-gray-500">Insurance Partners</p>
                       </div>
@@ -413,7 +424,7 @@ export default function Home() {
                 <div className="stat-card-shine bg-white rounded-2xl p-5 shadow-lg shadow-gray-100 border border-gray-100 text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '0.5s'} as React.CSSProperties}>
                   <div className="flex items-center justify-start gap-1 mb-1">
                     <span className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                      <AnimatedCounter end={100000} suffix="+" duration={2000} />
+                      <AnimatedCounter end={200000} suffix="+" duration={2000} />
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">Happy Patients</p>
@@ -421,7 +432,7 @@ export default function Home() {
                 <div className="stat-card-shine bg-white rounded-2xl p-5 shadow-lg shadow-gray-100 border border-gray-100 text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '1s'} as React.CSSProperties}>
                   <div className="flex items-center justify-start gap-1 mb-1">
                     <span className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                      <AnimatedCounter end={15000} suffix="+" duration={2000} />
+                      <AnimatedCounter end={60000} suffix="+" duration={2000} />
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">Surgeries</p>
@@ -429,7 +440,7 @@ export default function Home() {
                 <div className="stat-card-shine bg-white rounded-2xl p-5 shadow-lg shadow-gray-100 border border-gray-100 text-left hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" style={{'--shine-delay': '1.5s'} as React.CSSProperties}>
                   <div className="flex items-center justify-start gap-1 mb-1">
                     <span className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                      <AnimatedCounter end={12} suffix="+" duration={1500} />
+                      <AnimatedCounter end={14} suffix="+" duration={1500} />
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">Years Experience</p>
@@ -506,7 +517,7 @@ export default function Home() {
             {[
               { icon: Microscope, text: "State-of-the-art medical equipment" },
               { icon: Users, text: "Expert team of specialists" },
-              { icon: Heart, text: "1,00,000+ satisfied patients" },
+              { icon: Heart, text: "2,00,000+ satisfied patients" },
               { icon: Shield, text: "20+ insurance tie-ups" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
@@ -561,7 +572,7 @@ export default function Home() {
                 {[
                   { text: "State-of-the-art infrastructure with latest medical equipment" },
                   { text: "Team of highly qualified and experienced specialists" },
-                  { text: "Over 1,00,000+ satisfied patients and counting" },
+                  { text: "Over 2,00,000+ satisfied patients and counting" },
                   { text: "Empaneled with 20+ insurance companies for cashless treatment" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 group">
@@ -814,7 +825,7 @@ export default function Home() {
               {[
                 { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing" },
                 { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery" },
-                { icon: "/images/diagnostic services.png", title: "Prenatal Care", desc: "Complete pregnancy care" },
+                { icon: "/images/prenatal-care.jpg", title: "Prenatal Care", desc: "Complete pregnancy care" },
                 { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby wellness" },
               ].map((service, i) => (
                 <div key={i} className="bg-white rounded-2xl p-4 shadow-sm border-l-4 border-secondary">
@@ -897,7 +908,7 @@ export default function Home() {
             {[
               { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care", doctor: "Dr. Pallvi Singla" },
               { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery when medically necessary", doctor: "Dr. Pallvi Singla" },
-              { icon: "/images/diagnostic services.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring and health checkups", doctor: "Dr. Pallvi Singla" },
+              { icon: "/images/prenatal-care.jpg", title: "Prenatal Care", desc: "Complete pregnancy monitoring and health checkups", doctor: "Dr. Pallvi Singla" },
               { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness & recovery support", doctor: "Dr. Pallvi Singla" },
             ].map((service, i) => (
               <div
