@@ -824,14 +824,14 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe & natural birthing" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section", desc: "Expert surgical delivery" },
-                { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Pregnancy monitoring" },
-                { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother & baby care" },
+                { icon: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=200&h=200&fit=crop", title: "Normal Delivery", desc: "Safe & natural birthing" },
+                { icon: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200&h=200&fit=crop", title: "C-Section", desc: "Expert surgical delivery" },
+                { icon: "https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=200&h=200&fit=crop", title: "Prenatal Care", desc: "Pregnancy monitoring" },
+                { icon: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop", title: "Postnatal Care", desc: "Mother & baby care" },
               ].map((service, i) => (
-                <div key={i} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all">
-                  <div className="w-20 h-20 mx-auto mb-3 rounded-xl overflow-hidden bg-secondary/5 p-2">
-                    <Image src={service.icon} alt={service.title} width={80} height={80} className="object-contain w-full h-full" />
+                <div key={i} className="bg-white rounded-2xl p-3 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all">
+                  <div className="w-24 h-24 mx-auto mb-3 rounded-xl overflow-hidden">
+                    <Image src={service.icon} alt={service.title} width={96} height={96} className="object-cover w-full h-full" />
                   </div>
                   <h3 className="font-bold text-gray-900 text-sm mb-1">{service.title}</h3>
                   <p className="text-gray-500 text-[10px]">{service.desc}</p>
@@ -907,10 +907,10 @@ export default function Home() {
           {/* Maternity Services Grid - Redesigned with Large Images */}
           <div className="grid lg:grid-cols-4 gap-8 mb-12">
             {[
-              { icon: "/images/pregnancy.png", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", bgGradient: "from-pink-50 to-rose-50" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "C-Section Delivery", desc: "Expert surgical delivery with advanced OT facilities when medically necessary", doctor: "Dr. Pallvi Singla", bgGradient: "from-purple-50 to-pink-50" },
-              { icon: "/images/pregnancy.png", title: "Prenatal Care", desc: "Complete pregnancy monitoring, health checkups and guidance for expecting mothers", doctor: "Dr. Pallvi Singla", bgGradient: "from-teal-50 to-emerald-50" },
-              { icon: "/images/Delivery & Postnatal Care.png", title: "Postnatal Care", desc: "Mother and newborn wellness, recovery support and breastfeeding guidance", doctor: "Dr. Pallvi Singla", bgGradient: "from-emerald-50 to-teal-50" },
+              { icon: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=200&h=200&fit=crop", title: "Normal Delivery", desc: "Safe and natural birthing experience with expert care and support throughout", doctor: "Dr. Pallvi Singla", bgGradient: "from-pink-50 to-rose-50" },
+              { icon: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200&h=200&fit=crop", title: "C-Section Delivery", desc: "Expert surgical delivery with advanced OT facilities when medically necessary", doctor: "Dr. Pallvi Singla", bgGradient: "from-purple-50 to-pink-50" },
+              { icon: "https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=200&h=200&fit=crop", title: "Prenatal Care", desc: "Complete pregnancy monitoring, health checkups and guidance for expecting mothers", doctor: "Dr. Pallvi Singla", bgGradient: "from-teal-50 to-emerald-50" },
+              { icon: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop", title: "Postnatal Care", desc: "Mother and newborn wellness, recovery support and breastfeeding guidance", doctor: "Dr. Pallvi Singla", bgGradient: "from-emerald-50 to-teal-50" },
             ].map((service, i) => (
               <div
                 key={i}
