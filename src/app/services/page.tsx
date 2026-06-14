@@ -57,7 +57,7 @@ const maternityServices = [
   {
     title: "Pregnancy Care",
     description: "Complete care for expectant mothers throughout pregnancy",
-    features: ["Regular Check-ups", "Pregnancy Monitoring", "Nutrition Counseling", "High-Risk Pregnancy Care", "Pregnancy Exercise Classes"],
+    features: ["Regular Check-ups", "Pregnancy Monitoring", "Nutrition Counseling", "Safe Motherhood", "Pregnancy Exercise Classes"],
   },
   {
     title: "Diagnostic Services",
