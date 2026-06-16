@@ -39,9 +39,9 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { number: "100K+", label: "Happy Patients" },
-                  { number: "10+", label: "Years Experience" },
-                  { number: "5", label: "Expert Doctors" },
+                  { number: "2,00,000+", label: "Happy Patients" },
+                  { number: "16+", label: "Years Experience" },
+                  { number: "6", label: "Expert Doctors" },
                   { number: "24/7", label: "Emergency Service" },
                 ].map((stat, index) => (
                   <div key={index} className="bg-primary/5 rounded-lg p-4 text-center">

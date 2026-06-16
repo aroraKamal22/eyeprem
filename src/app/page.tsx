@@ -67,9 +67,9 @@ const doctors = [
   },
   {
     name: "Dr. Daizy Pathania",
-    qualification: "M.B.B.S, M.S. (Ophthalmology)",
-    role: "Glaucoma Specialist",
-    specialization: "Glaucoma Management",
+    qualification: "MS- Ophthalmology, FLVPEI Glaucoma",
+    role: "Consultant Ophthalmology",
+    specialization: "Glaucoma",
     experience: "10+",
     surgeries: "5,000+",
     image: "/images/Dr Daizy Pathania.jpg",
